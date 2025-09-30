@@ -98,6 +98,9 @@ func checkBGImage(dir fyne.URI, name string) (*FancyFolder, error) {
 	if filepath.Ext(name) == ".svg" {
 		res, err := fyne.LoadResourceFromPath(bgFile.Path())
 		if err == nil {
+			// Fix the uniqueness of name
+			res = fyne.NewStaticResource(bgFile.Path(), res.Content())
+
 			return &FancyFolder{
 				BackgroundResource: theme.NewThemedResource(res),
 				BackgroundFill:     canvas.ImageFillContain,
