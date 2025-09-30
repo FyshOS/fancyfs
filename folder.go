@@ -85,7 +85,10 @@ func DetailsForFolder(dir fyne.URI) (*FancyFolder, error) {
 }
 
 func checkBGImage(dir fyne.URI, name string) (*FancyFolder, error) {
-	bgFile, _ := storage.Child(dir, name)
+	bgFile, err := storage.Child(dir, name)
+	if err != nil {
+		return nil, err
+	}
 
 	if yes, err := storage.Exists(bgFile); !yes || err != nil {
 		if os.IsNotExist(err) {

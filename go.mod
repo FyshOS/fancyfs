@@ -1,4 +1,4 @@
-module github.com/fyshos/fancyfs
+module github.com/FyshOS/fancyfs
 
 go 1.19
 
